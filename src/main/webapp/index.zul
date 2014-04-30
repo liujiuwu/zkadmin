@@ -1,0 +1,39 @@
+<zk>
+	<zscript>
+        <![CDATA[
+	String[] genders = { "男", "女" };
+	ListModelList model = new ListModelList(genders);
+	model.addToSelection("男");
+]]></zscript>
+	<window title="Zk控件演示示例" border="normal">
+		<grid>
+			<auxhead>
+				<auxheader colspan="2" label="用户登记表" />
+			</auxhead>
+			<columns>
+				<column label="项目" width="150px"/>
+				<column label="内容" />
+			</columns>
+			<rows>
+				<row>
+					<label value="姓名"/>
+					<textbox id="name"/>
+				</row>
+				<row>
+					<label value="年龄" />
+					<intbox id="age"/>
+				</row>
+				<row>
+					<label value="性别" />
+					<selectbox id="gender" model="${model}" onSelect='alert(model.get(event.getData()));' width="100px">
+						<template name="model">${each}</template>
+					</selectbox>
+				</row>
+				<row>
+					<span />
+					<button label="确定" />
+				</row>
+			</rows>
+		</grid>
+	</window>
+</zk>
